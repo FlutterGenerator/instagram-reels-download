@@ -11,6 +11,9 @@
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
         }
         .container {
             margin: 20px auto;
@@ -71,19 +74,13 @@
             text-decoration: none;
             outline: none;
         }
-     .Text {
-           /* position: fixed;
-            text-align: center; */
-            bottom: 0;
-            width: 100%;
-        } 
-  
-         .vertical-space{
-            float: none;
-            margin: auto;
-            padding-bottom: 3em;
-           }
-
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #fafafa;
+            color: #333;
+            font-size: 16px;
+        }
         .spinner {
             border: 4px solid rgba(0, 0, 0, 0.1);
             border-left-color: #333;
@@ -111,7 +108,9 @@
         <div class="thumbnail-container" id="thumbnailContainer"></div>
         <a href="#" id="downloadButton" class="download-button" style="display: none;">Download Reel</a>
     </div>
-    <a href="https://github.com/MrTusarRX" target="_null"><h3 class="Text">Developed Tusar Khan</h3></a>
+    <div class="footer">
+        <a href="https://github.com/MrTusarRX" target="_null">Developed by Tusar Khan</a>
+    </div>
     <script>
         // Function to show spinner
         function showSpinner() {
@@ -204,5 +203,5 @@
             }
         });
     </script>
-</body> 
+</body>
 </html>
