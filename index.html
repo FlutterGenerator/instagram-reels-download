@@ -127,24 +127,24 @@
         <a href="#" id="downloadButton" class="download-button" style="display: none;">Download Reel</a>
     </div>
     <script>
-        // Function to show spinner
+      
         function showSpinner() {
             document.getElementById('spinner').style.display = 'block';
         }
 
-        // Function to hide spinner
+    
         function hideSpinner() {
             document.getElementById('spinner').style.display = 'none';
         }
 
-        // Function to fetch Instagram reel data
+      
         async function fetchInstagramReelData(instagramReelUrl) {
             showSpinner();
 
             const apiUrl = 'https://fastdl.app/api/convert';
             
             try {
-                // Make a POST request to the API with the Instagram reel URL
+              
                 const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
@@ -155,12 +155,12 @@
                     })
                 });
 
-                // Check if the response is okay
+         
                 if (!response.ok) {
                     throw new Error(`Error: ${response.statusText}`);
                 }
 
-                // Parse the JSON response
+              
                 const data = await response.json();
                 console.log('API Response:', data);
                 
@@ -170,20 +170,20 @@
             } catch (error) {
               
                 console.error('Error fetching Instagram reel data:', error);
-                //alert('Error fetching Instagram reel data: ' + error.message);
+             
                 hideSpinner();
             }
         }
 
-        // Function to display thumbnail and download button
+      
         function displayThumbnailAndDownloadButton(thumbnailUrl, downloadLink) {
             const thumbnailContainer = document.getElementById('thumbnailContainer');
             const downloadButton = document.getElementById('downloadButton');
 
-            // Display video thumbnail
+       
             thumbnailContainer.innerHTML = `<img src="${thumbnailUrl}" alt="Reel Thumbnail">`;
 
-            // Display download button
+        
             downloadButton.style.display = 'block';
             downloadButton.onclick = function() {
                 // Automatically start the download
@@ -196,21 +196,21 @@
             };
         }
 
-        // Add event listener to the fetch button
+       
         document.getElementById('fetchButton').addEventListener('click', async function() {
             const instagramReelUrl = document.getElementById('instagramReelUrl').value;
             if (instagramReelUrl) {
-                // Fetch Instagram reel data
+              
                 const data = await fetchInstagramReelData(instagramReelUrl);
 
-                // Check if the data was fetched successfully
+            
                 if (data && data.thumb && data.url && data.url.length > 0 && data.url[0].url) {
                     const thumbnailUrl = data.thumb;
                     const downloadLink = data.url[0].url;
                     console.log('Thumbnail URL:', thumbnailUrl);
                     console.log('Download Link:', downloadLink);
 
-                    // Display thumbnail and download button
+                   
                     displayThumbnailAndDownloadButton(thumbnailUrl, downloadLink);
                 }
             } else {
@@ -220,6 +220,6 @@
     </script>
 </body>
     <div class="TextR">
-         <a href="https://github.com/MrTusarRX" target="_null"><h3 class="Text">Developed Tusar Khan</h3></a>
+         <a href="https://github.com/MrTusarRX" target="_null"><h3 class="Text">Developed By Tusar Khan</h3></a>
      </div>
 </html>
