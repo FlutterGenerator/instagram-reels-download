@@ -80,10 +80,10 @@
             background-color: #f1f1f1;
             color: #555;
         }
-         .Text {
+        .Text {
     display: inline-block;
-    white-space: nowrap; /* Ensures text stays in a single line */
-    overflow: hidden; /* Hides overflow text */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide any overflow */
     animation: scrollText 10s linear infinite;
 }
 
@@ -91,13 +91,11 @@
     0% {
         transform: translateX(100%); /* Start outside from the right */
     }
-    50% {
-        transform: translateX(-100%); /* Halfway, text moves to the left */
-    }
     100% {
-        transform: translateX(0%); /* End at the left side */
+        transform: translateX(-100%); /* End at the left side */
     }
 }
+
 
         .spinner {
             border: 4px solid rgba(0, 0, 0, 0.1);
