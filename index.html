@@ -54,7 +54,7 @@
         }
         .thumbnail-container img {
             max-width: 30%;
-            height: 60%;
+            height: auto;
             border-radius: 8px;
         }
         .download-button {
@@ -80,25 +80,20 @@
             background-color: #f1f1f1;
             color: #555;
         }
-    .Text {
-    display: inline-block;
-    white-space: nowrap; /* Prevent text from wrapping */
-    overflow: hidden; /* Hide any overflow */
-    animation: scrollText 10s linear infinite;
-}
-
-@keyframes scrollText {
-    0% {
-        transform: translateX(100%); /* Start outside from the right */
-    }
-    100% {
-        transform: translateX(-100%); /* End at the left side */
-    }
-}
-
-
-
-
+        .Text {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: scrollText 10s linear infinite;
+        }
+        @keyframes scrollText {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
         .spinner {
             border: 4px solid rgba(0, 0, 0, 0.1);
             border-left-color: #333;
@@ -126,92 +121,89 @@
         <div class="thumbnail-container" id="thumbnailContainer"></div>
         <a href="#" id="downloadButton" class="download-button" style="display: none;">Download Reel</a>
     </div>
+    <div class="TextR">
+        <a href="https://github.com/MrTusarRX" target="_blank">
+            <h3 class="Text">Developed By Tusar Khan</h3>
+        </a>
+    </div>
+
     <script>
-      
         function showSpinner() {
             document.getElementById('spinner').style.display = 'block';
         }
 
-    
         function hideSpinner() {
             document.getElementById('spinner').style.display = 'none';
         }
 
-      
         async function fetchInstagramReelData(instagramReelUrl) {
             showSpinner();
 
-            const apiUrl = 'https://api.igram.world/api/convert';
+            const apiUrl = 'https://api.instasave.website/media';
             
             try {
-              
+                const formData = new URLSearchParams();
+                formData.append('url', instagramReelUrl);
+
                 const response = await fetch(apiUrl, {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/x-www-form-urlencoded'
                     },
-                    body: JSON.stringify({
-                        url: instagramReelUrl
-                    })
+                    body: formData
                 });
 
-         
                 if (!response.ok) {
                     throw new Error(`Error: ${response.statusText}`);
                 }
 
-              
                 const data = await response.json();
                 console.log('API Response:', data);
-                
+
                 hideSpinner();
 
                 return data;
             } catch (error) {
-              
                 console.error('Error fetching Instagram reel data:', error);
-             
                 hideSpinner();
             }
         }
 
-      
         function displayThumbnailAndDownloadButton(thumbnailUrl, downloadLink) {
             const thumbnailContainer = document.getElementById('thumbnailContainer');
             const downloadButton = document.getElementById('downloadButton');
 
-       
             thumbnailContainer.innerHTML = `<img src="${thumbnailUrl}" alt="Reel Thumbnail">`;
 
-        
             downloadButton.style.display = 'block';
             downloadButton.onclick = function() {
-                // Automatically start the download
                 const a = document.createElement('a');
                 a.href = downloadLink;
-                a.download = true;
+                a.download = '';
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
             };
         }
 
-       
         document.getElementById('fetchButton').addEventListener('click', async function() {
-            const instagramReelUrl = document.getElementById('instagramReelUrl').value;
+            const instagramReelUrl = document.getElementById('instagramReelUrl').value.trim();
             if (instagramReelUrl) {
-              
                 const data = await fetchInstagramReelData(instagramReelUrl);
 
-            
-                if (data && data.thumb && data.url && data.url.length > 0 && data.url[0].url) {
-                    const thumbnailUrl = data.thumb;
-                    const downloadLink = data.url[0].url;
+                if (data && data.media && data.media.length > 0) {
+                    const thumbnailUrl = data.media[0].thumbnail || '';
+                    const downloadLink = data.media[0].url || '';
                     console.log('Thumbnail URL:', thumbnailUrl);
                     console.log('Download Link:', downloadLink);
 
-                   
-                    displayThumbnailAndDownloadButton(thumbnailUrl, downloadLink);
+                    if (thumbnailUrl && downloadLink) {
+                        displayThumbnailAndDownloadButton(thumbnailUrl, downloadLink);
+                    } else {
+                        alert('Failed to retrieve media details.');
+                    }
+                } else {
+                    alert('Invalid response from API.');
                 }
             } else {
                 alert('Please enter a valid Instagram reel URL.');
@@ -219,7 +211,4 @@
         });
     </script>
 </body>
-    <div class="TextR">
-         <a href="https://github.com/MrTusarRX" target="_null"><h3 class="Text">Developed By Tusar Khan</h3></a>
-     </div>
 </html>
