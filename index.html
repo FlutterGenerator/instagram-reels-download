@@ -3,212 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram Video Downloader</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #fafafa;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        .container {
-            margin: 20px auto;
-            padding: 20px;
-            max-width: 600px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            flex: 1;
-        }
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        .input-group {
-            display: flex;
-            margin-bottom: 20px;
-        }
-        .input-group input[type="text"] {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            outline: none;
-        }
-        .input-group button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            outline: none;
-        }
-        .thumbnail-container {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .thumbnail-container img {
-            max-width: 30%;
-            height: auto;
-            border-radius: 8px;
-        }
-        .download-button {
-            display: block;
-            margin: 0 auto;
-            padding: 10px 20px;
-            background-color: #2196F3;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-        }
-        .TextR {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            text-align: center;
-            padding: 10px;
-            background-color: #f1f1f1;
-            color: #555;
-        }
-        .Text {
-            display: inline-block;
-            white-space: nowrap;
-            overflow: hidden;
-            animation: scrollText 10s linear infinite;
-        }
-        @keyframes scrollText {
-            0% {
-                transform: translateX(100%);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-        .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-left-color: #333;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto;
-            display: none;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+    <title>InstaSave Pro | Download Instagram Videos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Instagram Video Downloader</h1>
-        <div class="input-group">
-            <input type="text" id="instagramReelUrl" placeholder="Enter Instagram reel URL">
-            <button id="fetchButton">Fetch</button>
+    <header>
+        <div class="logo">
+            <i class="fab fa-instagram"></i>
+            <h1>InstaSave Pro</h1>
         </div>
-        <div class="spinner" id="spinner"></div>
-        <div class="thumbnail-container" id="thumbnailContainer"></div>
-        <a href="#" id="downloadButton" class="download-button" style="display: none;">Download Reel</a>
-    </div>
-    <div class="TextR">
-        <a href="https://github.com/MrTusarRX" target="_blank">
-            <h3 class="Text">Developed By Tusar Khan</h3>
-        </a>
-    </div>
-
-    <script>
-        function showSpinner() {
-            document.getElementById('spinner').style.display = 'block';
-        }
-
-        function hideSpinner() {
-            document.getElementById('spinner').style.display = 'none';
-        }
-
-        async function fetchInstagramReelData(instagramReelUrl) {
-            showSpinner();
-
-            const apiUrl = 'https://api.instasave.website/media';
+        <p class="tagline">Download Instagram videos in high quality with one click</p>
+    </header>
+    
+    <main>
+        <div class="container">
+            <div class="input-section">
+                <h2>Paste Instagram Video URL</h2>
+                <div class="input-group">
+                    <input type="text" id="instagramReelUrl" placeholder="https://www.instagram.com/reel/...">
+                    <button id="fetchButton" class="btn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+                <div class="spinner" id="spinner"></div>
+                <div id="response"></div>
+            </div>
             
-            try {
-                const formData = new URLSearchParams();
-                formData.append('url', instagramReelUrl);
+            <div class="result-section" id="resultSection">
+                <div class="media-container">
+                    <img src="" alt="Video Thumbnail" class="thumbnail" id="thumbnail">
+                    <div class="download-options" id="downloadOptions"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-bolt"></i>
+            </div>
+            <h3 class="feature-title">Fast Download</h3>
+            <p class="feature-desc">Get your videos instantly with our high-speed servers.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h3 class="feature-title">Secure</h3>
+            <p class="feature-desc">No login required. We don't store your data.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-highlighter"></i>
+            </div>
+            <h3 class="feature-title">High Quality</h3>
+            <p class="feature-desc">Download videos in HD quality without watermark.</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2023 InstaSave Pro. All rights reserved.</p>
+        <p>This tool is not affiliated with Instagram.</p>
+    </footer>
 
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: formData
-                });
-
-                if (!response.ok) {
-                    throw new Error(`Error: ${response.statusText}`);
-                }
-
-                const data = await response.json();
-                console.log('API Response:', data);
-
-                hideSpinner();
-
-                return data;
-            } catch (error) {
-                console.error('Error fetching Instagram reel data:', error);
-                hideSpinner();
-            }
-        }
-
-        function displayThumbnailAndDownloadButton(thumbnailUrl, downloadLink) {
-            const thumbnailContainer = document.getElementById('thumbnailContainer');
-            const downloadButton = document.getElementById('downloadButton');
-
-            thumbnailContainer.innerHTML = `<img src="${thumbnailUrl}" alt="Reel Thumbnail">`;
-
-            downloadButton.style.display = 'block';
-            downloadButton.onclick = function() {
-                const a = document.createElement('a');
-                a.href = downloadLink;
-                a.download = '';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-            };
-        }
-
-        document.getElementById('fetchButton').addEventListener('click', async function() {
-            const instagramReelUrl = document.getElementById('instagramReelUrl').value.trim();
-            if (instagramReelUrl) {
-                const data = await fetchInstagramReelData(instagramReelUrl);
-
-                if (data && data.media && data.media.length > 0) {
-                    const thumbnailUrl = data.media[0].thumbnail || '';
-                    const downloadLink = data.media[0].url || '';
-                    console.log('Thumbnail URL:', thumbnailUrl);
-                    console.log('Download Link:', downloadLink);
-
-                    if (thumbnailUrl && downloadLink) {
-                        displayThumbnailAndDownloadButton(thumbnailUrl, downloadLink);
-                    } else {
-                        alert('Failed to retrieve media details.');
-                    }
-                } else {
-                    alert('Invalid response from API.');
-                }
-            } else {
-                alert('Please enter a valid Instagram reel URL.');
-            }
-        });
-    </script>
+    <script src="https://mrtusarrx.github.io/instagram-reels-download/fetch.js"></script>
 </body>
 </html>
