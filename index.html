@@ -1,76 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InstaSave Pro | Download Instagram Videos</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-	<link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <header>
-	  <div class="logo">
-		<i class="fab fa-instagram"></i>
-		<h1>InstaSave Pro</h1>
-	  </div>
-	  <p class="tagline">Download Instagram videos in high quality with one click</p>
-    </header>
-<!-- Favicon -->
-    <link rel="shortcut icon" href="Bidzz.png" type="image/x-icon">
-    <main>
-	  <div class="container">
-		<div class="input-section">
-		  <h2>Paste Instagram Video URL</h2>
-		  <div class="input-group">
-			<input type="text" id="instagramReelUrl" placeholder="https://www.instagram.com/reel/...">
-			<button id="fetchButton" class="btn">
-			  <i class="fas fa-download"></i> Download
-			</button>
-		  </div>
-		  <div class="spinner" id="spinner"></div>
-		  <div id="response"></div>
-		</div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InstaSave Pro | Download Instagram Videos</title>
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="instagram.png" type="image/x-icon" />
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" 
+	  integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" 
+	  crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-		<div class="result-section" id="resultSection">
-		  <div class="media-container">
-			<img src="" alt="Video Thumbnail" class="thumbnail" id="thumbnail">
-			<div class="download-options" id="downloadOptions"></div>
-		  </div>
-		</div>
-	  </div>
-    </main>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <i class="fab fa-instagram" aria-hidden="true"></i>
+      <h1>InstaSave Pro</h1>
+    </div>
+    <p class="tagline">Download Instagram videos in high quality with one click</p>
+  </header>
 
-    <div class="features">
-	  <div class="feature-card">
-		<div class="feature-icon">
-		  <i class="fas fa-bolt"></i>
-		</div>
-		<h3 class="feature-title">Fast Download</h3>
-		<p class="feature-desc">Get your videos instantly with our high-speed servers.</p>
-	  </div>
+  <!-- Main Section -->
+  <main>
+    <div class="container">
+      <section class="input-section">
+        <h2>Paste Instagram Video URL</h2>
+        <div class="input-group">
+          <label for="instagramReelUrl" class="visually-hidden">Instagram Reel URL</label>
+          <input type="text" id="instagramReelUrl" placeholder="https://www.instagram.com/reel/..." />
+          <button id="fetchButton" class="btn">
+            <i class="fas fa-download" aria-hidden="true"></i> <span>Download</span>
+          </button>
+        </div>
+        <div class="spinner" id="spinner" aria-hidden="true"></div>
+        <div id="response"></div>
+      </section>
 
-	  <div class="feature-card">
-		<div class="feature-icon">
-		  <i class="fas fa-lock"></i>
-		</div>
-		<h3 class="feature-title">Secure</h3>
-		<p class="feature-desc">No login required. We don't store your data.</p>
-	  </div>
+      <section class="result-section" id="resultSection" hidden>
+        <div class="media-container">
+          <img src="" alt="Instagram video thumbnail" class="thumbnail" id="thumbnail" />
+          <div class="download-options" id="downloadOptions"></div>
+        </div>
+      </section>
+    </div>
+  </main>
 
-	  <div class="feature-card">
-		<div class="feature-icon">
-		  <i class="fas fa-highlighter"></i>
-		</div>
-		<h3 class="feature-title">High Quality</h3>
-		<p class="feature-desc">Download videos in HD quality without watermark.</p>
-	  </div>
+  <!-- Features Section -->
+  <section class="features">
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-bolt" aria-hidden="true"></i></div>
+      <h3 class="feature-title">Fast Download</h3>
+      <p class="feature-desc">Get your videos instantly with our high-speed servers.</p>
     </div>
 
-    <footer>
-	  <p>© 2025 InstaSave Pro By MrTusarRX By FlutterGenerator. All rights reserved.</p>
-	  <p>This tool is not affiliated with Instagram.</p>
-    </footer>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-lock" aria-hidden="true"></i></div>
+      <h3 class="feature-title">Secure</h3>
+      <p class="feature-desc">No login required. We don't store your data.</p>
+    </div>
 
-    <script src="https://mrtusarrx.github.io/instagram-reels-download/fetch.js"></script>
-  </body>
+    <div class="feature-card">
+      <div class="feature-icon"><i class="fas fa-highlighter" aria-hidden="true"></i></div>
+      <h3 class="feature-title">High Quality</h3>
+      <p class="feature-desc">Download videos in HD quality without watermark.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 InstaSave Pro by MrTusarRX | FlutterGenerator. All rights reserved.</p>
+    <p>This tool is not affiliated with Instagram.</p>
+  </footer>
+
+  <!-- Script -->
+  <script src="https://mrtusarrx.github.io/instagram-reels-download/fetch.js"></script>
+</body>
 </html>
